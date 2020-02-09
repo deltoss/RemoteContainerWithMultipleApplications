@@ -1,8 +1,18 @@
 # Debugging ASP.Net Core + VS Code + docker-compose + Remote Container Extension + Multiple Applications
 
-## Releasing the Application
+## Debugging the Application
 
-## Releasing
+1. Open the directory that contains the `docker-compose.base.yml` and other docker compose files with `VSCode`.
+2. Press `F1`, and type and select the command `Remote-Containers: Open Folder in Container...`.
+3. A prompt should open for your select a folder. Select the `WebApi` folder.
+4. This will re-open `VSCode` with the container.
+5. Put breakpoints, and press `F5` to run the applicaton. Alternatively you can go to the `Debug` tab and press the green `play` button.
+6. Repeat steps 1-5, but select `WebApp` folder instead for step 3.
+7. Browse to:
+   * [http://localhost:5000](http://localhost:5000) for the web application, and
+   * [http://localhost:5002](http://localhost:5002) for the web api. You can browse to the [Weather Forecast](http://localhost:5002/WeatherForecast) api endpoint.
+
+## Releasing the Application
 
 1. Open up a terminal and change the working directory to where the project's `docker-compose.base.yml` & `docker-compose.release.yml`.
 2. Edit the `.env` file. There's various variables you may want to configure to suit your purposes. You can change whether it deploys using development or production configs, or whether it'll set up HTTPS.
