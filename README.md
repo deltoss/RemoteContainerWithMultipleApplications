@@ -31,7 +31,7 @@
 
 ## Problem
 
-The problem with multi-container setup is you can't really use a shared `.env` file for your `docker-compose`
+The problem with multi-container setup with `docker-compose` is you can't really use a shared `.env` file for your `docker-compose`
 
 Imagine if you have this structure:
 
@@ -47,7 +47,7 @@ Imagine if you have this structure:
 * docker-compose.devcontainer.yml
 * docker-compose.release.yml
 
-The way the remote `containers extensions` work when you use command `Remote-Containers: Open Folder in Container...` is it'll open the folder where the `.devcontainer.json` file resides. The working directory would also be where this `.devcontainer.json` file resides, where it'll use the `docker-compose` commands.
+With the `remote - containers` extension, if you follow the official instructions [here](https://code.visualstudio.com/docs/remote/containers-advanced#_connecting-to-multiple-containers-at-once), where you'd use the command `Remote-Containers: Open Folder in Container...`, it won't actually work and would just error out. The problem is it'll open the folder where the `.devcontainer.json` file resides. The `docker-compose` command's working directory would also be where this `.devcontainer.json` file resides.
 
 The implications of this is it'll try to find and use the `.env` file from the directory where the `.devcontainer.json` file resides (which of course, doesn't exists). As it doesn't exist in that directory, the `.env` file isn't used, meaning the environment variables doesn't get imported, causing the extension to fail. 
 
@@ -68,5 +68,5 @@ Thus, currently the only way to get it to work is you'll need to copy your `.env
 
 This can be resolved if the extension lets us specify the option `--project-directory` for `docker-compose`.
 
-For more information, see:
+For more information on `--project-directory`, see:
 * https://github.com/docker/compose/issues/5481#issuecomment-547083786
