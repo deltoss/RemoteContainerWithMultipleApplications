@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+
+### Web Application Container #######################
+    webapp:
+      build:
+        context: .
+        dockerfile: ./.docker/Release/WebApp/Dockerfile
+
+### Web Api Container #######################
+    webapi:
+      build:
+        context: .
+        dockerfile: ./.docker/Release/WebApi/Dockerfile

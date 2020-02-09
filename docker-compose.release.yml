@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+
+### Web Application Container #######################
+    webapp:
+      build:
+        args:
+          - entrypointfile=./.docker/Release/WebApp/docker-entrypoint.sh
+          - buildconfig=${WEB_APP_BUILD_CONFIG}
+          - pathtoproject=${WEB_APP_PATH_TO_PROJECT}
+          - csprojbasename=${WEB_APP_CS_PROJ_BASE_NAME}
+          - launchapp=${WEB_APP_LAUNCH_APP}
+      environment:
+        - WEATHER_FORE_CAST_API=http://webapi
+      ports:
+        - "${WEB_APP_HOST_HTTP_PORT}:80"
+
+### Web Application Container #######################
+    webapi:
+      build:
+        args:
+          - entrypointfile=./.docker/Release/WebApi/docker-entrypoint.sh
+          - buildconfig=${WEB_API_BUILD_CONFIG}
+          - pathtoproject=${WEB_API_PATH_TO_PROJECT}
+          - csprojbasename=${WEB_API_CS_PROJ_BASE_NAME}
+          - launchapp=${WEB_API_LAUNCH_APP}
+      ports:
+        - "${WEB_API_HOST_HTTP_PORT}:80"
