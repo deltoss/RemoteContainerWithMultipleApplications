@@ -57,9 +57,11 @@ Thus, currently the only way to get it to work is you'll need to copy your `.env
 * WebApi
   * .devcontainer.json
   * `.env`
+  * ... Other source code files
 * WebApp
   * .devcontainer.json
   * `.env`
+  * ... Other source code files
 * docker-compose.base.yml
 * docker-compose.devcontainer.yml
 * docker-compose.release.yml
